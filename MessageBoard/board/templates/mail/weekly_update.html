@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Weekly update for category {{category.name}}</title>
+    <title>Weekly updates for from MessageBoard!</title>
 </head>
 <body>
-    <h1> Some new posts in your favourite category for the last 7 days:</h1>
+    <h1> Some new posts form your favourite site for the last 7 days:</h1>
         {% for post in posts %}
-        <a href="http://127.0.0.1:8000{% url 'news:post_detail' post.id %}">
+        <a href="http://127.0.0.1:8000{% url 'board:post_detail' post.id %}">
         {{ post.title }}
          </a>
         {% endfor %}

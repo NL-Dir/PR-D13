@@ -20,13 +20,18 @@ Post
  <div class="card-body">
    {{ post.text }}
  </div>
+    {% if post.img %}
    <div class="card-body">
-   <img src="../{{ post.img }}">
- </div>  <div class="card-body">
+   <img src="{{ post.img.url }}">
+   {% endif %}
+ </div>
+    {% if post.video %}
+    <div class="card-body">
    <video>
-        <source src="../{{ post.video }}">
+        <source src="{{ post.video.url }}">
      </video>
  </div>
+    {% endif %}
 </div>
 
 {% endblock content %}
