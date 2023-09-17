@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your comment accepted</title>
+</head>
+<body>
+    <h1> Your comment for post {{ post }} accepted!/h1>
+    <p>
+        Your comment
+            <a href="http://127.0.0.1:8000{% url 'board:comment' comment.id %}">
+        {{ comment.text|truncatechars:50}}
+    </a>
+        for post
+        <strong>{{ post }}</strong>
+        was accepted!
+    </p>
+</body>
+</html>

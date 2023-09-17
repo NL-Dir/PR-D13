@@ -1,0 +1,56 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+Comments
+{% endblock title %}
+
+{% block content %}
+<h1>Мои комментарии</h1>
+<form method="GET">
+   {{ filter.form }}
+   <input class="btn btn-primary" type="submit" value="Найти">
+</form>
+    {% if comments %}
+        <table>
+            <tr>
+                <th scope="col">
+                    Пост
+                </th>
+                <th scope="col">
+                    Дата публикации
+                </th>
+                <th scope="col">
+                    Текст
+                </th>
+            </tr>
+        {% for comment in filter.qs %}
+               <tr>
+                   <td>
+                       {{ comment.commentPost.title }}
+                  </td>
+                   <td>
+                       {{ comment.dateCreation|date:'d.m.Y' }}
+                   </td>
+                   <td>
+                       <a href="{% url 'board:comment' comment.id %}">
+                            {{ comment.text|truncatechars:50}}
+                       </a>
+                   </td>
+                   <td>
+                       <a href="{% url 'board:accept' comment.id %}">
+                            Accept
+                       </a>
+                   </td>
+                   <td>
+                       <a href="{% url 'board:delete' comment.id %}">
+                            Delete
+                       </a>
+                   </td>
+               </tr>
+        {% endfor %}
+        </table>
+    {% include 'posts/parts/paginator.html' %}
+    {% else %}
+         <h3>Комментариев пока нет</h3>
+    {% endif %}
+{% endblock content %}

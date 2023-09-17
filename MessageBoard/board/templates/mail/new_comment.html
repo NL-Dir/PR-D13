@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New post</title>
+</head>
+<body>
+    <h1> New comment for your post {{ post }}/h1>
+    <p>
+        There is a new comment for your post
+        <strong>{{ post }}</strong>
+    </p>
+    <a href="http://127.0.0.1:8000{% url 'board:comment' comment.id %}">
+        {{ comment.text|truncatechars:50}}
+    </a>
+</body>
+</html>

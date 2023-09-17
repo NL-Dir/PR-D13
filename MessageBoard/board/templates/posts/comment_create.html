@@ -1,0 +1,18 @@
+{% extends 'layout/base.html' %}
+
+
+{% block title %}
+Comment create
+{% endblock title %}
+
+{% block content %}
+
+<h3>Comment create</h3>
+
+<form method="POST">
+ {% csrf_token %}
+ {{ form }}
+   <input class="btn btn-success" type="submit" value="Submit">
+</form>
+
+{% endblock content %}

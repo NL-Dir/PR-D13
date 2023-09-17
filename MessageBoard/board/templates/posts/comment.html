@@ -1,0 +1,11 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+Comment
+{% endblock title %}
+{% block content %}
+<h1>Комментарий к статье {{ comment.commentPost.title }}</h1>
+<b>Дата публикации: </b>{{ comment.dateCreation|date:'d.m.Y H:i' }}
+<b>Автор: </b>{{ comment.commentUser.username }}
+<p>{{ comment.text }}</p>
+{% endblock content %}

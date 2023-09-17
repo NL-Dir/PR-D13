@@ -1,0 +1,51 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+Posts
+{% endblock title %}
+
+{% block content %}
+<h1>Объявления</h1>
+<h3>Объявлений на странице: {{ posts|length }}</h3>
+    {% if posts %}
+        <table>
+            <tr>
+                <th scope="col">
+                    Заголовок
+                </th>
+                <th scope="col">
+                    Дата публикации
+                </th>
+                <th scope="col">
+                    Текст
+                </th>
+            </tr>
+        {% for post in posts %}
+               <tr>
+                   <td>
+                       <a href="{% url 'board:post_detail' post.id %}">
+                            {{ post.title }}
+                       </a>
+                  </td>
+                   <td>
+                       {{ post.creationDate|date:'d.m.Y' }}
+                   </td>
+                   <td>
+                       {{ post.text|truncatechars:50}}
+                   </td>
+                   <td>
+                        <a href="{% url 'board:post_update' post.id %}">
+                            Edit
+                        </a>
+                        <a href="{% url 'board:post_delete' post.id %}">
+                            Delete
+                        </a>
+                    </td>
+               </tr>
+        {% endfor %}
+        </table>
+    {% include 'posts/parts/paginator.html' %}
+    {% else %}
+         <h3>Пока объявлений нет</h3>
+    {% endif %}
+{% endblock content %}
